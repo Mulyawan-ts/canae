@@ -1,7 +1,40 @@
 ---
-const { label } = Astro.props;
+interface Props {
+  name: string;
+  href?: string;
+  variant?: "primary" | "secondary" | "danger" | "ghost";
+  size?: "sm" | "md" | "lg";
+  disabled?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  name,
+  variant = "btn-soft",
+  size = "md",
+  disabled = false,
+  class: className,
+} = Astro.props;
+
+const sizeClass = {
+  sm: "btn-sm",
+  md: "",
+  lg: "btn-lg",
+};
+
+const classes = ["btn", `btn-${variant}`, sizeClass[size], className];
+const isLink = !!href;
 ---
 
-<div>
-  <button class="btn">{label}</button>
-</div>
+{
+  isLink ? (
+    <a href={href} class:list={classes}>
+      {name}
+    </a>
+  ) : (
+    <button class:list={classes} disabled={disabled}>
+      {name}
+    </button>
+  )
+}
