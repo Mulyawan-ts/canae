@@ -1,0 +1,23 @@
+# environment
+.env
+**/.env
+
+# database
+*.db
+
+# node
+node_modules/
+**/node_modules/
+
+# frontend build
+frontend/dist/
+frontend/.astro/
+
+# backend binary
+backend/bin/
+backend/tmp/
+backend/*.exe
+
+# os
+.DS_Store
+Thumbs.db

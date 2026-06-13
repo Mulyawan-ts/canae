@@ -1,0 +1,196 @@
+---
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+
+const stats = [
+  {
+    label: "Total Karyawan",
+    value: "248",
+    icon: "👥",
+    change: "+12 bulan ini",
+  },
+  {
+    label: "Hadir Hari Ini",
+    value: "190",
+    icon: "✅",
+    change: "76% dari total",
+  },
+  {
+    label: "Cuti & Izin",
+    value: "18",
+    icon: "📅",
+    change: "7 menunggu approval",
+  },
+  { label: "Karyawan Baru", value: "6", icon: "🆕", change: "Bulan Juni 2026" },
+];
+
+const recentEmployees = [
+  {
+    name: "Budi Santoso",
+    position: "Frontend Developer",
+    status: "Hadir",
+    avatar: "BS",
+  },
+  {
+    name: "Siti Rahma",
+    position: "UI/UX Designer",
+    status: "Hadir",
+    avatar: "SR",
+  },
+  {
+    name: "Ahmad Fauzi",
+    position: "Backend Developer",
+    status: "Cuti",
+    avatar: "AF",
+  },
+  {
+    name: "Dewi Lestari",
+    position: "Project Manager",
+    status: "Hadir",
+    avatar: "DL",
+  },
+  {
+    name: "Reza Pratama",
+    position: "DevOps Engineer",
+    status: "Izin",
+    avatar: "RP",
+  },
+];
+---
+
+<DashboardLayout title="Dashboard">
+  <Sidebar>
+    <div class="p-8">
+      <!-- header -->
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold">Dashboard</h1>
+        <p class="text-base-content/60 text-sm mt-1">
+          Selamat datang kembali — Jumat, 6 Juni 2026
+        </p>
+      </div>
+
+      <!-- stat cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {
+          stats.map((stat) => (
+            <div class="card bg-base-100 shadow-sm">
+              <div class="card-body p-5">
+                <div class="flex items-center justify-between mb-2">
+                  <p class="text-sm text-base-content/60">{stat.label}</p>
+                  <span class="text-2xl">{stat.icon}</span>
+                </div>
+                <p class="text-3xl font-bold">{stat.value}</p>
+                <p class="text-xs text-base-content/40 mt-1">{stat.change}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- tabel & aktivitas -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- tabel karyawan -->
+        <div class="lg:col-span-2 card bg-base-100 shadow-sm">
+          <div class="card-body p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-semibold">Karyawan Hari Ini</h2>
+              <a href="/karyawan" class="text-primary text-sm">Lihat semua →</a>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    recentEmployees.map((emp) => (
+                      <tr class="hover">
+                        <td>
+                          <div class="flex items-center gap-3">
+                            <div class="avatar placeholder">
+                              <div class="bg-primary text-primary-content rounded-full w-8">
+                                <span class="text-xs">{emp.avatar}</span>
+                              </div>
+                            </div>
+                            <span class="font-medium text-sm">{emp.name}</span>
+                          </div>
+                        </td>
+                        <td class="text-sm text-base-content/60">
+                          {emp.position}
+                        </td>
+                        <td>
+                          <span
+                            class:list={[
+                              "badge badge-sm",
+                              emp.status === "Hadir" && "badge-success",
+                              emp.status === "Cuti" && "badge-warning",
+                              emp.status === "Izin" && "badge-error",
+                            ]}
+                          >
+                            {emp.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- aktivitas terbaru -->
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body p-5">
+            <h2 class="font-semibold mb-4">Aktivitas Terbaru</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3">
+                <div class="w-2 h-2 rounded-full bg-success mt-1.5 shrink-0">
+                </div>
+                <div>
+                  <p class="text-sm font-medium">Budi Santoso absen masuk</p>
+                  <p class="text-xs text-base-content/40">08:02 — hari ini</p>
+                </div>
+              </li>
+              <li class="flex gap-3">
+                <div class="w-2 h-2 rounded-full bg-warning mt-1.5 shrink-0">
+                </div>
+                <div>
+                  <p class="text-sm font-medium">Ahmad Fauzi mengajukan cuti</p>
+                  <p class="text-xs text-base-content/40">07:45 — hari ini</p>
+                </div>
+              </li>
+              <li class="flex gap-3">
+                <div class="w-2 h-2 rounded-full bg-info mt-1.5 shrink-0"></div>
+                <div>
+                  <p class="text-sm font-medium">6 karyawan baru ditambahkan</p>
+                  <p class="text-xs text-base-content/40">Kemarin, 15:30</p>
+                </div>
+              </li>
+              <li class="flex gap-3">
+                <div class="w-2 h-2 rounded-full bg-error mt-1.5 shrink-0">
+                </div>
+                <div>
+                  <p class="text-sm font-medium">Reza Pratama izin sakit</p>
+                  <p class="text-xs text-base-content/40">Kemarin, 09:10</p>
+                </div>
+              </li>
+              <li class="flex gap-3">
+                <div class="w-2 h-2 rounded-full bg-success mt-1.5 shrink-0">
+                </div>
+                <div>
+                  <p class="text-sm font-medium">Laporan bulanan digenerate</p>
+                  <p class="text-xs text-base-content/40">2 hari lalu</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Sidebar>
+</DashboardLayout>

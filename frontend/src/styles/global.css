@@ -2,3 +2,7 @@
 @plugin "daisyui"{
   themes: corporate --default;
 }
+
+html {
+  overflow-y: scroll;
+}

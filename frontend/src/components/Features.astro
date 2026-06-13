@@ -1,0 +1,80 @@
+---
+const features = [
+  {
+    icon: "👥",
+    title: "Manajemen Karyawan",
+    description:
+      "Kelola data karyawan, jabatan, dan departemen dalam satu tempat.",
+    href: "/karyawan",
+  },
+  {
+    icon: "🕐",
+    title: "Absensi",
+    description:
+      "Pantau kehadiran karyawan secara real-time dengan laporan harian.",
+    href: "/absensi",
+  },
+  {
+    icon: "📊",
+    title: "Laporan",
+    description:
+      "Analisis performa dan produktivitas tim dengan visualisasi data.",
+    href: "/laporan",
+  },
+  {
+    icon: "📅",
+    title: "Jadwal Kerja",
+    description:
+      "Atur shift dan jadwal kerja karyawan dengan mudah dan fleksibel.",
+    href: "/jadwal",
+  },
+  {
+    icon: "💰",
+    title: "Penggajian",
+    description: "Hitung dan kelola gaji karyawan otomatis setiap bulan.",
+    href: "/gaji",
+  },
+  {
+    icon: "📝",
+    title: "Pengajuan",
+    description: "Proses cuti, izin, dan lembur karyawan secara digital.",
+    href: "/pengajuan",
+  },
+];
+---
+
+<section class="py-20 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-3">Semua yang kamu butuhkan</h2>
+      <p class="text-base-content/60 max-w-xl mx-auto">
+        Canae menyederhanakan pengelolaan tempat kerja dalam satu platform yang
+        mudah digunakan.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        features.map((feature) => (
+          <a
+            href={feature.href}
+            class="card bg-base-100 hover:shadow-md transition-shadow duration-200 group"
+          >
+            <div class="card-body">
+              <div class="text-4xl mb-3">{feature.icon}</div>
+              <h3 class="card-title text-base group-hover:text-primary transition-colors">
+                {feature.title}
+              </h3>
+              <p class="text-base-content/60 text-sm">{feature.description}</p>
+              <div class="card-actions justify-end mt-2">
+                <span class="text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Selengkapnya →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

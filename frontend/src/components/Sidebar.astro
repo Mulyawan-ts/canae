@@ -1,0 +1,50 @@
+---
+
+---
+
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+
+  <!-- konten utama masuk di sini -->
+  <div class="drawer-content flex flex-col">
+    <!-- tombol hamburger untuk mobile -->
+    <div class="navbar bg-base-100 lg:hidden px-4">
+      <label for="my-drawer-3" class="btn btn-ghost btn-square">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16"></path>
+        </svg>
+      </label>
+    </div>
+    <slot />
+  </div>
+
+  <!-- sidebar -->
+  <div class="drawer-side z-10">
+    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <ul
+      class="menu bg-base-100 border-r border-base-200 min-h-full w-64 p-4 gap-1"
+    >
+      <li class="mb-4">
+        <span class="text-lg font-bold px-2">Canae</span>
+      </li>
+      <li><a href="/dashboard" class="active">📊 Dashboard</a></li>
+      <li><a href="/karyawan">👥 Karyawan</a></li>
+      <li><a href="/absensi">✅ Absensi</a></li>
+      <li><a href="/jadwal">📅 Jadwal Kerja</a></li>
+      <li><a href="/pengajuan">📝 Pengajuan</a></li>
+      <li><a href="/laporan">📈 Laporan</a></li>
+      <li class="mt-auto"><a href="/pengaturan">⚙️ Pengaturan</a></li>
+    </ul>
+  </div>
+</div>
